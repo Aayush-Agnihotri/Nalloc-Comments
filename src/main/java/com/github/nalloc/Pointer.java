@@ -24,11 +24,19 @@ public interface Pointer<T> extends AutoCloseable {
 	/**
 	 * @return Struct referenced by this pointer.
 	 */
+	
+	/* Aayush
+	This method returns the struct at a given pointer.
+	*/
 	T deref();
 
 	/**
 	 * @return Memory address pointed to.
 	 */
+	
+	/* Aayush
+	This method returns the memory address that a given pointer holds.
+	*/
 	long address();
 
 	/**
@@ -36,11 +44,19 @@ public interface Pointer<T> extends AutoCloseable {
 	 *
 	 * @param New address
 	 */
+	
+	/* Aayush
+	This method sets a memory address after being given one.
+	*/
 	void address(final long address);
 
 	/**
 	 * Frees memory that is pointed to by this pointer.
 	 */
+	
+	/* Aayush
+	This method clears the memory at a given pointer.
+	*/
 	void free();
 
 	/**
@@ -49,11 +65,19 @@ public interface Pointer<T> extends AutoCloseable {
 	 *
 	 * @return Clone of this pointer
 	 */
+	
+	/* Aayush
+	This method clones a pointer after being given one.
+	*/
 	Pointer<T> clone();
 
 	/**
 	 * AutoCloseable support, calls free().
 	 */
+	
+	/* Aayush
+	This method calls the free() method and closes any exisiting resources.
+	*/
 	@Override
 	void close();
 
