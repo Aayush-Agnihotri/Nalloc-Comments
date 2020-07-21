@@ -28,6 +28,10 @@ public interface Array<T> extends Pointer<T> {
 	 *
 	 * @return Struct addressed to index
 	 */
+	
+	/* Aayush
+	This method returns the pointer of a struct at the specific index in the array.
+	*/
 	T get(final long index);
 
 	/**
@@ -36,6 +40,10 @@ public interface Array<T> extends Pointer<T> {
 	 * @param index Array index to clear
 	 * @return Struct addressed to index
 	 */
+	
+	/* Aayush
+	This method returns the pointer of a struct at the specific index in the array and also clears the struct at that index by setting the memory to 0.
+	*/
 	T clear(final long index);
 
 	/**
@@ -43,6 +51,10 @@ public interface Array<T> extends Pointer<T> {
 	 *
 	 * @return Length of array
 	 */
+	
+	/* Aayush
+	This method returns the number of structs in the array.
+	*/
 	long size();
 
 	/**
@@ -51,6 +63,10 @@ public interface Array<T> extends Pointer<T> {
 	 *
 	 * @return Clone of this array pointer
 	 */
+	
+	/* Aayush
+	This method returns a clone of the pointer to the array.
+	*/
 	@Override
 	Array<T> clone();
 }
