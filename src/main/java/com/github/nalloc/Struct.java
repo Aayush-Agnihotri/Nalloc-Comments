@@ -36,16 +36,28 @@ public @interface Struct {
 	/**
 	 * List of fields in the struct.
 	 * */
+	
+	/* Aayush
+	This method returns each individual field of the struct.
+	*/
 	Field[] value();
 
 	/**
 	 * C/C++ compatibility.
 	 */
+	
+	/* Aayush
+	I am not sure what this method does.
+	*/
 	boolean c() default false;
 
 	/**
 	 * Pad struct size to multiple of.
 	 */
+	
+	/* Aayush
+	This method sets the default padding of the struct to 1 byte between fields. 
+	*/
 	byte pad() default 1;
 
 	/**
@@ -57,27 +69,47 @@ public @interface Struct {
 		/**
 		 * Name of the field.
 		 * */
+		
+		/* Aayush
+		This method returns the name of a field in a struct.
+		*/
 		String name();
 
 		/**
 		 * Storage type.
 		 */
+		
+		/* Aayush
+		This method returns the type of a field in a struct.
+		*/
 		Type type();
 
 		/**
 		 * Length of the field.
 		 */
+		
+		/* Aayush
+		This method returns the length of a field in a struct.
+		*/
 		long len() default 1;
 
 		/**
 		 * Nested struct class if type is STRUCT.
 		 */
+		
+		/* Aayush
+		This method will return nothing if the field type is struct.
+		*/
 		Class<?> struct() default void.class;
 	}
 
 	/**
 	 * Type of struct field.
 	 */
+	
+	/* Aayush
+	This method establishes the types of fields that can compose a struct.
+	*/
 	public enum Type {
 		BYTE,
 		CHAR,
