@@ -38,7 +38,7 @@ public @interface Struct {
 	 * */
 	
 	/* Aayush
-	This method returns each individual field of the struct.
+	Sets the values of the fields within the struct when being created.
 	*/
 	Field[] value();
 
@@ -47,7 +47,7 @@ public @interface Struct {
 	 */
 	
 	/* Aayush
-	I am not sure what this method does.
+	Declares if a struct is C/C++ compatible when being created.
 	*/
 	boolean c() default false;
 
@@ -56,7 +56,7 @@ public @interface Struct {
 	 */
 	
 	/* Aayush
-	This method sets the default padding of the struct to 1 byte between fields. 
+	Sets the padding between fields of the struct when being created. 
 	*/
 	byte pad() default 1;
 
@@ -71,7 +71,7 @@ public @interface Struct {
 		 * */
 		
 		/* Aayush
-		This method returns the name of a field in a struct.
+		Sets the name of a field in a struct.
 		*/
 		String name();
 
@@ -80,7 +80,7 @@ public @interface Struct {
 		 */
 		
 		/* Aayush
-		This method returns the type of a field in a struct.
+		Sets the type of a field in a struct. Can only be Type.BYTE, Type.CHAR, Type.INT, Type.LONG, Type.STRING, or Type.STRUCT.
 		*/
 		Type type();
 
@@ -89,7 +89,7 @@ public @interface Struct {
 		 */
 		
 		/* Aayush
-		This method returns the length of a field in a struct.
+		Sets the length of a field in a struct.
 		*/
 		long len() default 1;
 
@@ -98,7 +98,7 @@ public @interface Struct {
 		 */
 		
 		/* Aayush
-		This method will return nothing if the field type is struct.
+		Sets the field's struct class to void if one is not defined when creating the field.
 		*/
 		Class<?> struct() default void.class;
 	}
@@ -108,7 +108,7 @@ public @interface Struct {
 	 */
 	
 	/* Aayush
-	This method establishes the types of fields that can compose a struct.
+	Establishes the types of fields that can compose a struct.
 	*/
 	public enum Type {
 		BYTE,
