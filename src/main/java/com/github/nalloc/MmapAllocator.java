@@ -41,6 +41,10 @@ public interface MmapAllocator {
 	 * @param structType Class annotated with &#064;Struct
 	 * @return Mmapped array
 	 */
+	
+	/* Aayush
+	This function maps a file to virtual memory and returns an array of the mapped objects.
+	*/
 	<T> Array<T> mmap(final File file, final long nmemb, final Class<T> structType) throws IOException;
 
 	/**
@@ -56,6 +60,10 @@ public interface MmapAllocator {
 	 * @param structType Class annotated with &#064;Struct
 	 * @return Mmapped array
 	 */
+	
+	/* Aayush
+	This function maps individual bytes to virtual memory and returns an array of the mapped objects.
+	*/
 	<T> Array<T> mmap(final ByteBuffer buffer, final Class<T> structType);
 
 	/**
@@ -70,6 +78,10 @@ public interface MmapAllocator {
 	 * @param structType Class annotated with &#064;Struct
 	 * @return Mmapped array
 	 */
+	
+	/* Aayush
+	This function maps any number of elements to virtual memory and returns an array of the mapped objects.
+	*/
 	<T> Array<T> mmap(final long nmemb, final Class<T> structType);
 
 	/**
@@ -80,6 +92,10 @@ public interface MmapAllocator {
 	 * @param structs Mmapped array
 	 * @return Array memory region as buffer
 	 */
+	
+	/* Aayush
+	This function converts array of objects into a byte array. 
+	*/
 	ByteBuffer toBytes(final Array<?> structs);
 
 	public class Factory {
@@ -90,6 +106,10 @@ public interface MmapAllocator {
 		 * @param structTypes Struct classes that the returned allocator can instantiate
 		 * @return New allocator instance
 		 */
+		
+		/* Aayush
+		This function creates a new Mmap Allocator that is capable of allocating structs that are in structTypes.
+		*/
 		public static MmapAllocator create(final Class<?>... structTypes) {
 			return new DirectBufferMmapAllocator(structTypes);
 		}
