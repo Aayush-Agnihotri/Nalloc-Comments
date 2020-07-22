@@ -35,6 +35,10 @@ public interface NativeHeapAllocator {
 	 * @param structType Class annotated with &#064;Struct
 	 * @return Pointer to struct instance
 	 */
+	
+	/* Aayush
+	This function allocates space in memory and returns a pointer to the space. The allocated memory is not changed, only sectioned off. The size of the space allocated depends on the size of the struct. 
+	*/
 	<T> Pointer<T> malloc(final Class<T> structType);
 
 	/**
@@ -49,6 +53,10 @@ public interface NativeHeapAllocator {
 	 * @param structType Class annotated with &#064;Struct
 	 * @return Pointer to struct array
 	 */
+	
+	/* Aayush
+	This function allocates space in memory for an array of elements and returns a pointer to the space. The allocated memory is cleared by setting it to 0.  
+	*/
 	<T> Array<T> calloc(final long nmemb, final Class<T> structType);
 
 	/**
@@ -65,6 +73,10 @@ public interface NativeHeapAllocator {
 	 * @param nmemb New size of array
 	 * @return Pointer to struct array of size nmemb
 	 */
+	
+	/* Aayush
+	This function takes a pointer from a previously allocated array and resizes the space. If the resized space is larger than it was previously, the new allocated memory will remain unchanged and only sectioned off. 
+	*/
 	<T> Array<T> realloc(final Array<T> pointer, final long nmemb);
 
 	public class Factory {
@@ -75,6 +87,10 @@ public interface NativeHeapAllocator {
 		 * @param structTypes Struct classes that the returned allocator can instantiate
 		 * @return New allocator instance
 		 */
+		
+		/* Aayush
+		This function creates a new Native Heap Allocator that is capable of allocated structs that are in structTypes. 
+		*/
 		public static NativeHeapAllocator create(final Class<?>... structTypes) {
 			return new UnsafeNativeHeapAllocator(structTypes);
 		}
