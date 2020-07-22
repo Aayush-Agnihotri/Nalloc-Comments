@@ -23,6 +23,10 @@ import com.github.nalloc.Struct.Type;
  *
  * @author Antti Laisi
  */
+
+/* Aayush
+This method creates struct "val" with an int field for testing.
+*/
 @Struct(@Field(name="val",type=Type.INT))
 public interface Val {
 	int val();
