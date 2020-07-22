@@ -89,7 +89,7 @@ public interface NativeHeapAllocator {
 		 */
 		
 		/* Aayush
-		This function creates a new Native Heap Allocator that is capable of allocated structs that are in structTypes. 
+		This function creates a new Native Heap Allocator that is capable of allocating structs that are in structTypes. 
 		*/
 		public static NativeHeapAllocator create(final Class<?>... structTypes) {
 			return new UnsafeNativeHeapAllocator(structTypes);
