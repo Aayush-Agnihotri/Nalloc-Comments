@@ -42,6 +42,9 @@ public class DirectBufferMmapAllocatorTest {
 	final MmapAllocator allocator = MmapAllocator.Factory.create(MyMappedStruct.class);
 	File file;
 
+	/* Aayush
+	This method allocates the MyMappedStruct struct as an array named "array", sets struct equal to the first element of array, changes struct to 1, and then checks if struct equals 1, if file object exists, and if 10 * the size of struct equals the file length.
+	*/
 	@Test
 	public void shouldMemoryMapFile() throws IOException {
 		try(Array<MyMappedStruct> array = allocator.mmap(file(), 10, MyMappedStruct.class)) {
@@ -54,6 +57,9 @@ public class DirectBufferMmapAllocatorTest {
 		}
 	}
 
+	/* Aayush
+	This method allocates the MyMappedStruct struct as an array named "array", sets struct equal to the first element of array, creates buffer as a byte array of array, sets the first element of buffer as 77, and checks if 77 equals struct's first field.
+	*/
 	@Test
 	public void shouldAccessStructAsByteBuffer() throws IOException {
 		try(Array<MyMappedStruct> array = allocator.mmap(file(), 1, MyMappedStruct.class)) {
@@ -66,6 +72,9 @@ public class DirectBufferMmapAllocatorTest {
 		}
 	}
 
+	/* Aayush
+	This method creates a buffer with a capacity of 128 bytes named "buffer", puts 123 in the buffer, allocates the MyMappedStruct struct as an array named "array", and checks if 123 equals the MyMappedStruct field.
+	*/
 	@Test
 	public void shouldMemoryMapBuffer() {
 		ByteBuffer buffer = ByteBuffer.allocateDirect(128);
@@ -76,6 +85,9 @@ public class DirectBufferMmapAllocatorTest {
 		assertEquals(123, array.deref().id());
 	}
 
+	/* Aayush
+	This method allocates the MyMappedStruct struct as an array named "array", sets the 10th element of the array to 19, creates a buffered array of array named bytes, and then checks if 10th element of array and 9 times the size of bytes equals 19. 
+	*/
 	@Test
 	public void shoulMemoryMapAnonymousBuffer() {
 		try(Array<MyMappedStruct> array = allocator.mmap(10, MyMappedStruct.class)) {
@@ -97,6 +109,9 @@ public class DirectBufferMmapAllocatorTest {
 		allocator.mmap(ByteBuffer.allocateDirect(8), MyMappedStruct.class);
 	}
 
+	/* Aayush
+	This method deletes file if the object's value is not null.
+	*/
 	@After
 	public void cleanup() {
 		if(file != null) {
@@ -108,6 +123,9 @@ public class DirectBufferMmapAllocatorTest {
 		return file = File.createTempFile(getClass().getSimpleName(), ".map");
 	}
 
+	/* Aayush
+	This method creates the struct named MyMappedStruct with its long field.
+	*/
 	@Struct({
 		@Field(name="id", type=Type.LONG) })
 	static interface MyMappedStruct {
