@@ -32,6 +32,20 @@ public class MmapArrayTest {
 
 	final MmapAllocator allocator = MmapAllocator.Factory.create(Val.class);
 
+	/* Aayush
+	This method allocates space for a file of 5 structs and creates array as an array of the structs. It then:
+	1.) Creates clone, which is a copy of the pointer to array
+	2.) Creates v1 as the first element of array
+	3.) Sets the v1.val field equal to 123
+	4.) Creates v2 as the second element of clone
+	5.) Sets the v2.val field equal to 456
+	
+	6.) Checks if the address of the original array equals the cloned array
+	7.) Checks if the size of the original array equals the cloned array 
+	8.) Checks if the v1.val field does not equal the v2.val field
+	9.) Checks if the v1.val field equals the cloned field
+	10.) Deletes the file object
+	*/
 	@Test
 	public void shouldCloneArray() throws IOException {
 		File file = File.createTempFile(getClass().getSimpleName(), ".map");
