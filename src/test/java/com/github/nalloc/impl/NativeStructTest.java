@@ -35,6 +35,15 @@ public class NativeStructTest {
 
 	final NativeHeapAllocator allocator = NativeHeapAllocator.Factory.create(NestedStruct.class);
 
+	/* Aayush
+	This method allocates space for the NestedStruct struct and creates a clone of the NestedStruct pointer named clone. It then:
+	1.) Sets the int field of the nested Val struct to 1 
+	2.) Sets the first element of the array field in the NestedStruct struct to 2
+	
+	3.) Checks if the original struct and cloned struct match
+	4.) Checks if the nested int field equals the cloned int field
+	5.) Checks if the first element of the original array equals the first element of the cloned array
+	*/
 	@Test
 	public void shouldCloneNestedFields() {
 		try(Pointer<NestedStruct> ptr = allocator.malloc(NestedStruct.class)) {
@@ -48,6 +57,9 @@ public class NativeStructTest {
 		}
 	}
 
+	/* Aayush
+	This method creates a struct named NestedStruct with a nested struct field and an array field.
+	*/
 	@Struct({
 		@Field(name="nested", type=Type.STRUCT, struct=Val.class),
 		@Field(name="array", type=Type.STRUCT, struct=Val.class, len=2) })
