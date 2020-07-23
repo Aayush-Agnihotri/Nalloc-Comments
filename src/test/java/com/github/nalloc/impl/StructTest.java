@@ -35,6 +35,19 @@ import com.github.nalloc.Struct.Type;
  */
 public class StructTest {
 
+	/* Aayush
+	This function defines ptr as the pointer to the SimpleTypes structure and creates simple as a struct at pointer ptr. It then:
+	1.) Sets the lnumber field to its maximum value
+	2.) Sets the inumber field to its minimum value
+	3.) Sets the c field to the euro sign
+	4.) Sets the b field to its maximum value
+	
+	5.) Checks if the lnumber field is equal to the maximum long value
+	6.) Checks if the inumber field is equal to the minimum int value
+	7.) Checks if the c field is equal to the euro sign
+	8.) Checks if the b field is equal to the maximum byte value
+	9.) Checks if the struct is of size 15
+	*/
 	@Test
 	public void shouldGetAndSetSimpleTypes() {
 		try(Pointer<SimpleTypes> ptr = struct(SimpleTypes.class)) {
@@ -53,6 +66,21 @@ public class StructTest {
 		}
 	}
 
+	/* Aayush
+	This function defines ptr as the pointer to the ArrayTypes structure and creates arrays as a struct at pointer ptr. It then:
+	1.) Sets the barray field
+	2.) Sets the carray field
+	3.) Sets the iarray field
+	4.) Sets the larray field
+	5.) Sets the string field
+	
+	6.) Checks if the barray field is equal to what it was set to previously
+	7.) Checks if the carray field is equal to what it was set to previously
+	8.) Checks if the iarray field is equal to what it was set to previously
+	9.) Checks if the larray field is equal to what it was set to previously
+	10.) Checks if the string field is equal to what it was set to previously
+	11.) Checks if the struct is of size 76
+	*/
 	@Test
 	public void shouldGetAndSetArrayTypes() {
 		try(Pointer<ArrayTypes> ptr = struct(ArrayTypes.class)) {
@@ -73,6 +101,21 @@ public class StructTest {
 		}
 	}
 
+	/* Aayush
+	This function defines ptr as the pointer to the CCompatible structure and creates compatible as a struct at pointer ptr. It then:
+	1.) Sets the l field to its minimum value
+	2.) Sets the c field to a dollar sign
+	3.) Sets the carray field
+	4.) Sets the string field to "123"
+	5.) Sets the string2 field to "123-too-long"
+	
+	6.) Checks if the l field is equal to the minimum long value
+	7.) Checks if the c field is equal to the dollar sign
+	8.) Checks if the carray field is equal to what it was set to previously
+	9.) Checks if the string field is equal to "123"
+	10.) Checks if the string2 field is equal to "123-too-long"
+	11.) Checks if the struct is of size 24
+	*/
 	@Test
 	public void shouldGetAndSetCCompatible() {
 		try(Pointer<CCompatible> ptr = struct(CCompatible.class)) {
@@ -93,6 +136,13 @@ public class StructTest {
 		}
 	}
 
+	/* Aayush
+	This function defines ptr as the pointer to the WithNestedStruct structure and creates nested as a struct at pointer ptr. This creates a nested struct. It then:
+	1.) Sets the compatible().string field to "12"
+	
+	2.) Checks if the compatible().string field is equal to "12"
+	3.) Checks if the size of the nested struct equals the size of the original struct 
+	*/
 	@Test
 	public void shouldGetNestedStructs() {
 		try(Pointer<WithNestedStruct> ptr = struct(WithNestedStruct.class)) {
@@ -104,6 +154,13 @@ public class StructTest {
 		}
 	}
 
+	/* Aayush
+	This function defines ptr as the pointer to the WithNestedArray structure and creates array as a struct at pointer ptr. It then:
+	1.) Sets the array().get(1).compatible().string field to "AB"
+	
+	2.) Checks if the array().get(1).compatible().string field equals "AB"
+	3.) Checks if double the size of the array inside of a nested struct is equal to the struct size 
+	*/
 	@Test
 	public void shouldGetNestedStructArrays() {
 		try(Pointer<WithNestedArray> ptr = struct(WithNestedArray.class)) {
@@ -115,12 +172,18 @@ public class StructTest {
 		}
 	}
 
+	/* Aayush
+	This method allocates space in memory and returns a pointer to the space.
+	*/
 	<T> Pointer<T> struct(final Class<T> structType) {
 		return NativeHeapAllocator.Factory.create(structType).malloc(structType);
 	}
 
 	// types
 
+	/* Aayush
+	This method creates the SimpleTypes struct with its 4 fields.
+	*/
 	@Struct({
 		@Field(name="lnumber", type=Type.LONG),
 		@Field(name="inumber", type=Type.INT),
@@ -138,6 +201,9 @@ public class StructTest {
 		long getSize();
 	}
 
+	/* Aayush
+	This method creates the ArrayTypes struct with its 5 fields.
+	*/
 	@Struct({
 		@Field(name="barray", type=Type.BYTE, len=2),
 		@Field(name="carray", type=Type.CHAR, len=3),
@@ -158,6 +224,9 @@ public class StructTest {
 		long getSize();
 	}
 
+	/* Aayush
+	This method creates the CCompatible struct with its 5 fields.
+	*/
 	@Struct(c=true, pad=8, value={
 		@Field(name="l", type=Type.LONG),
 		@Field(name="c", type=Type.CHAR),
@@ -178,6 +247,9 @@ public class StructTest {
 		long getSize();
 	}
 
+	/* Aayush
+	This method creates the WithNestedStruct struct with its 1 field, which is a nested struct.
+	*/
 	@Struct(c=true, pad=8, value={
 		@Field(name="compatible", type=Type.STRUCT, struct=CCompatible.class) })
 	static interface WithNestedStruct {
@@ -185,6 +257,9 @@ public class StructTest {
 		long getSize();
 	}
 
+	/* Aayush
+	This method creates the WithNestedArray struct with its 1 field, which is an array of a nested struct.
+	*/
 	@Struct(c=true, pad=8, value={
 		@Field(name="array", type=Type.STRUCT, struct=WithNestedStruct.class, len=2) })
 	static interface WithNestedArray {
