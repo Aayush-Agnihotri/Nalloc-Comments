@@ -31,6 +31,9 @@ public class HeapPointerTest {
 
 	final NativeHeapAllocator allocator = NativeHeapAllocator.Factory.create(Val.class);
 
+	/* Aayush
+	This method allocates two structs and creates their pointers, s1 and s2, then switches their memory addresses, and checks if the fields previously set stay the same.
+	*/
 	@Test
 	public void shouldSetPointerAddress() {
 		try(Pointer<Val> s1 = allocator.malloc(Val.class);
@@ -47,6 +50,9 @@ public class HeapPointerTest {
 		}
 	}
 
+	/* Aayush
+	This method allocates the val struct with pointer ptr, sets the val int field to 99, clones ptr and names it clone, and finally checks if the addresses and field values of the original and clone are equal.
+	*/
 	@Test
 	public void shouldClonePointer() {
 		try(Pointer<Val> ptr = allocator.malloc(Val.class)) {
@@ -58,6 +64,9 @@ public class HeapPointerTest {
 		}
 	}
 
+	/* Aayush
+	This method allocates the val struct with pointer ptr and checks to make sure that ptr begins with "0x".
+	*/
 	@Test
 	public void shouldPrintAddressWithToString() {
 		try(Pointer<Val> ptr = allocator.malloc(Val.class)) {
