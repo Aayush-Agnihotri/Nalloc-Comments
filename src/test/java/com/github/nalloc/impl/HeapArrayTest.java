@@ -31,6 +31,9 @@ public class HeapArrayTest {
 
 	final NativeHeapAllocator allocator = NativeHeapAllocator.Factory.create(Val.class);
 
+	/* Aayush
+	This method allocates two arrays, s1 and s2, switches their memory addresses, and checks if the fields previously set stay the same.
+	*/
 	@Test
 	public void shouldSetArrayAddress() {
 		try(Array<Val> s1 = allocator.calloc(2, Val.class);
@@ -47,6 +50,9 @@ public class HeapArrayTest {
 		}
 	}
 
+	/* Aayush
+	This method allocates the val array as array, clones array and names it clone, sets the first element of array to 123, and then makes sure that the original array's address, size, and first element equal the clone's.
+	*/
 	@Test
 	public void shouldCloneArray() {
 		try(Array<Val> array = allocator.calloc(2, Val.class)) {
@@ -59,6 +65,9 @@ public class HeapArrayTest {
 		}
 	}
 
+	/* Aayush
+	This method allocates the val array as ptr and checks if ptr begins with "0x".
+	*/
 	@Test
 	public void shouldPrintAddressWithToString() {
 		try(Array<Val> ptr = allocator.calloc(1, Val.class)) {
@@ -66,6 +75,9 @@ public class HeapArrayTest {
 		}
 	}
 
+	/* Aayush
+	This method allocates the val array as array, sets the array's first element to 9, clears the element, and checks if the first element is equal to 0.
+	*/
 	@Test
 	public void shouldClearIndex() {
 		try(Array<Val> array = allocator.calloc(1, Val.class)) {
