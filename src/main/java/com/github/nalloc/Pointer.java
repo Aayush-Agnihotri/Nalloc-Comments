@@ -46,7 +46,7 @@ public interface Pointer<T> extends AutoCloseable {
 	 */
 	
 	/* Aayush
-	This method sets a memory address after being given one.
+	This method sets a struct's memory address after being given one.
 	*/
 	void address(final long address);
 
@@ -76,7 +76,7 @@ public interface Pointer<T> extends AutoCloseable {
 	 */
 	
 	/* Aayush
-	This method calls the free() method and closes any exisiting resources.
+	This method calls the free() method and closes any existing resources.
 	*/
 	@Override
 	void close();
